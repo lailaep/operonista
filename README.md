@@ -29,3 +29,17 @@ root_directory/  # The directory specified in the script\
 ├── random_folder/\
 │   ├── list_of_operons_xyz789.txt\
 │   ├── predicted_protein_sequences_xyz789.txt\
+
+# What next?
+The file output(s) containing protein sequences and easily-identifiable fasta headers should be in an acceptable format for most tree-building pipelines. Here is what I do with mine, for example:
+### 1. Align protein sequences
+Use an alignment tool to align all of the protein sequences pulled from operonista. I usually use command-line MUSCLE in a conda environment, but there is also a UI version:\
+https://www.ebi.ac.uk/jdispatcher/msa/muscle?stype=protein\ \
+\
+**CAUTION:** operonista is pulling sequences based on the annotation provided by Operon-mapper, and I cannot guarantee these annotations are fully accurate and/or that the protein-coding genes are homologous. This may leave you with a chaotic phylogeny if there is little similarity between the genes you pull. In these situations, you may consider building that chaotic tree first, and using that to hone in on particular branches of interest (e.g., build another tree with that subset).
+### 2. Trim alignments (optional)
+Trimming alignments can be useful to remove gaps in your alignments that don't offer much resolution for your phylogeny. I usually use ClipKit:\
+https://github.com/JLSteenwyk/ClipKIT
+### 3. Build tree
+Once you have your fasta file containing aligned and trimmed protein sequences, you're ready for the big guns. I usually use IQTree to build my phylogenies, with options like ModelFinder and bootstrapping:
+http://www.iqtree.org/
