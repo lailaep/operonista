@@ -1,9 +1,9 @@
 import re
 
 # File paths
-genome_ids_file = "/Users/Snacks/Grad_School/Moran_Lab/Projects/Orbaceae/whole_genome_sequencing/operon-mapper/PapC/genome_IDs.txt"
-fasta_file = "/Users/Snacks/Grad_School/Moran_Lab/Projects/Orbaceae/whole_genome_sequencing/operon-mapper/PapC/combined_PapC_sequences.fasta"
-output_fasta_file = "/Users/Snacks/Grad_School/Moran_Lab/Projects/Orbaceae/whole_genome_sequencing/operon-mapper/PapC/combined_PapC_sequences_renamed.fasta"
+genome_ids_file = "genome_IDs.txt" # change to filepath for your tab-separated list of genome IDs and genome names
+fasta_file = "combined_pilus_sequences.fasta" # change to filepath for the target fasta file you want to rename
+output_fasta_file = "combined_pilus_sequences_renamed.fasta" # specify name for your output file
 
 # Read genome_IDs.txt into a dictionary
 prefix_to_genome = {}
