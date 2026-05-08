@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+# -----------READ ME------------
+# This program should:
+# * Grab .gbff files (from NCBI)
+# * Extract regions based on specified coordinates, OR;
+# * Extract regions based on NCBI Protein accession #
+# * Preserve proteins, i.e., if a specified coordinate is within CDS, include the whole protein
+#    rather than cut protein seq
+# * Make you feel like a cool scientist :)
+# * Prep a file for operon visualizers like GeneGraphics
+# FUTURE VERSIONS will ideally extract operons from multiple genomes based on homologs (for clinker)
+# -------------------------------
 from Bio import SeqIO
 from Bio.SeqFeature import FeatureLocation, CompoundLocation
 import copy
