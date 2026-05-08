@@ -1,12 +1,12 @@
 # operonista
-Code for parsing Operon-mapper output from bacterial genomes :o) \
+Code for parsing NCBI data to visualize bacterial genomic operons :o) \
 Author: Laila Phillips lphillips@utexas.edu\
-References used: ChatGPT [GPT-4-turbo]
+References used: ChatGPT [GPT-4-turbo] / Claude [Sonnet 4.6]
 
 ## Dependencies
-1. Operon-mapper [https://biocomputo.ibt.unam.mx/operon_mapper/]
-2. Python
+See file "packages" in repo for now...
 
+##---------------------I need to update the text below it is from an older version!
 ## Purpose
 This code is intended to pull out protein sequences from the list_of_operons_* and predicted_protein_sequences_* output files matching keywords you specify in the extract_operonic_sequences.py file. This is useful for phylogenetic analysis of certain genes.
 
