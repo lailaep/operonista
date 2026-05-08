@@ -75,22 +75,26 @@ def option_b(record):
         "Enter protein accession(s), comma-separated if multiple: "
     ).strip()
     prot_list = [p.strip() for p in prot_input.split(",")]
-
-    # User-defined flank size
     window = int(input("Enter flank size (bp) around each protein: ").strip())
 
     regions = []
     for prot_acc in prot_list:
+        found = False
         for feat in record.features:
             if feat.type == "CDS" and "protein_id" in feat.qualifiers:
-                if prot_acc in feat.qualifiers["protein_id"]:
-                    hit_start = int(feat.location.start) + 1
-                    hit_end = int(feat.location.end)
-                    start = max(1, hit_start - window)
-                    end = min(len(record), hit_end + window)
-                    regions.append((prot_acc, start, end))
-                    break
-        else:
+                # Check against each item in the list, strip version suffixes
+                for pid in feat.qualifiers["protein_id"]:
+                    if prot_acc.split('.')[0] == pid.split('.')[0]:
+                        hit_start = int(feat.location.start) + 1
+                        hit_end = int(feat.location.end)
+                        start = max(1, hit_start - window)
+                        end = min(len(record), hit_end + window)
+                        regions.append((prot_acc, start, end))
+                        found = True
+                        break
+            if found:
+                break
+        if not found:
             print(f"Warning: Protein accession {prot_acc} not found.")
     return regions
 
