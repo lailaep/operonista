@@ -2,8 +2,8 @@
 """
 =======================
 OPERONISTA
-VERSION: 3.2
-LAST UPDATED: 5/8/26
+VERSION: 3.3
+LAST UPDATED: 5/17/26
 =======================
 Integrated tool for:
   - Downloading .gbff files from NCBI by GCA/GCF accession
@@ -196,6 +196,9 @@ def shift_location(loc, shift, region_len):
         parts = [p for p in parts if p is not None]
         if not parts:
             return None
+        if len(parts) == 1:
+            # CompoundLocation requires ≥2 parts; downgrade to SimpleLocation
+            return parts[0]
         return CompoundLocation(parts, loc.operator)
 
     start = int(loc.start) + shift
@@ -393,7 +396,7 @@ def run_mode_c(output_dir):
             hit_index = 0  # counts hits per contig
 
             for feat in record.features:
-                if feat.type not in ("CDS", "gene", "rRNA", "tRNA", "ncRNA"):
+                if feat.type not in ("CDS", "rRNA", "tRNA", "ncRNA"):
                     continue
                 if not match_gene_name(feat, query_lower):
                     continue
