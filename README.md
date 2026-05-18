@@ -7,7 +7,7 @@
 Author: Laila Phillips lphillips@utexas.edu\
 References used: ChatGPT [GPT-4-turbo] / Claude [Sonnet 4.6]
 
-An interactive command-line tool for downloading genome files from NCBI and extracting regions of interest as `.gbk` files for use with **GeneGraphics** and **clinker**.  
+An interactive command-line tool for downloading genome `.gbff` files from NCBI and extracting regions of interest as `.gbk` files for use with **GeneGraphics** and **clinker**.  
 
 I use this to analyze synteny in genomic regions of bacteria, or illustrate the gene map for visualization purposes.
 </td>
@@ -31,7 +31,7 @@ I use this to analyze synteny in genomic regions of bacteria, or illustrate the 
 python genome_region_extractor.py
 ```
 
-The program is fully interactive — it will prompt you for all inputs. At startup it asks whether you need to download `.gbff` files from NCBI. You can skip this if you already have them.
+The program is fully interactive and will prompt you for all inputs. At startup it asks whether you need to download `.gbff` files from NCBI (optional).
 
 ---
 
